@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Day 1st</title>
+</head>
+<body>
+   <script type="text/x-handlebars">
+   <section>
+        <header>Ember Practice Day1</header>
+       <nav>
+        <a href="#/">Home</a>
+        <a href="#/about">About us</a>
+        <a href="#/contact">Contact us</a>
+       </nav>
+        <div>
+            {{outlet}}
+        </div>
+             <footer>adatapost@gmail.com</footer>
+    </section>
+    </script>
+  
+    <script type="text/x-handlebars" data-template-name="index"> 
+        <h1>Hello, Home</h1>
+    </script>
+    <script type="text/x-handlebars" data-template-name="about"> 
+        <h1>About us</h1>
+    </script>
+    <script type="text/x-handlebars" data-template-name="contact"> 
+        <h1>Contact us</h1>
+    </script>
+    <script src="../Scripts/jquery-2.0.3.js"></script>
+    <script src="../Scripts/handlebars-1.0.0.js"></script>
+    <script src="../Scripts/ember-1.0.0.js"></script>
+
+    <script>
+       App = Ember.Application.create();
+       App.Router.map(function () {
+           this.resource("about", { path: "/about" });
+           this.resource("contact", { path: "/contact" });
+       });
+    </script>
+
+</body>
+</html>
