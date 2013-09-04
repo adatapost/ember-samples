@@ -21,9 +21,21 @@
   
     <script type="text/x-handlebars" data-template-name="index"> 
         <h1>Hello, Home</h1>
+        <h2>{{title}}</h2>
+        <ul>
+          {{#each month in months}}
+             <li>{{month}}</li>
+          {{/each}}
+        </ul>
     </script>
     <script type="text/x-handlebars" data-template-name="about"> 
         <h1>About us</h1>
+        <h2>{{title}}</h2>
+        <ol>
+          {{#each person in persons}}
+            <li>{{person.name}}, a {{person.designation}} </li>
+          {{/each}}
+        </ol>
     </script>
     <script type="text/x-handlebars" data-template-name="contact"> 
         <h1>Contact us</h1>
@@ -38,6 +50,22 @@
            this.resource("about", { path: "/about" });
            this.resource("contact", { path: "/contact" });
        });
+
+       App.IndexController = Ember.Controller.extend({
+           title: "Schedule",
+           months: ["Jan","Feb","Mar"]
+       });
+
+       App.AboutController = Ember.Controller.extend({
+           title: "Our team",
+           persons: [
+               {name: "Mr. Rajesh", designation: "CEO"},
+               {name: "Mr. Manish", designation: "Developer"},
+               {name: "Miss. M", designation: "Designer"}
+           ]
+       });
+
+       App.ContactController = Ember.Controller.extend({});
     </script>
 </body>
 </html>

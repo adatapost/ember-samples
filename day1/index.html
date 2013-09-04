@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>First Ember App</title>
+</head>
+<body>
+    <!-- application template -->
+    <script type="text/x-handlebars"> 
+        <section>
+            <header>
+               <h1>{{App.info.title}}</h1>
+               <h3>Version - {{App.info.version}}</h3>
+               <hr/>
+            </header>
+            <nav>
+               <a href="#">Home</a>
+            </nav>
+            <div>
+              {{outlet}}
+            </div>
+            <footer>
+                 &copy; Copyright AVD 2013
+            </footer>
+        </section>
+    </script>
+
+    <script src="../Scripts/jquery-2.0.3.js"></script>
+    <script src="../Scripts/handlebars-1.0.0.js"></script>
+    <script src="../Scripts/ember-1.0.0.js"></script>
+
+    <script>
+        //Create an application 
+        window.App = Ember.Application.create();
+
+        //Define a class 
+        App.Info = Ember.Object.extend();
+        //Creates an object
+        App.info = App.Info.create({ title: "Ember App", version: "1.0" });
+    </script>
+
+    <!-- "index" template  -->
+    <script type="text/x-handlebars" data-template-name="index">
+        <h2>This is the index</h2>
+    </script>
+</body>
+</html>

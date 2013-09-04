@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>First Ember App</title>
+</head>
+<body>
+    <!-- application template -->
+    <script type="text/x-handlebars"> 
+        <section>
+            <header>
+               <h1>{{appName}}</h1>
+               <h3>Version - {{appVersion}}</h3>
+               <h4>{{message}}</h4>
+               <hr/>
+            </header>
+            <nav>
+               <a href="#">Home</a>
+            </nav>
+            <div>
+              {{outlet}}
+            </div>
+            <footer>
+                 &copy; Copyright AVD 2013
+            </footer>
+        </section>
+    </script>
+
+    <script src="../Scripts/jquery-2.0.3.js"></script>
+    <script src="../Scripts/handlebars-1.0.0.js"></script>
+    <script src="../Scripts/ember-1.0.0.js"></script>
+
+    <script>
+        //Create an application 
+        window.App = Ember.Application.create();
+
+        //Configure ApplicationRoute
+
+        App.ApplicationRoute = Ember.Route.extend({
+            setupController: function (controller) {
+                controller.set('message', 'Welcome to the world of Ember');
+            }
+        });
+        App.ApplicationController = Ember.Controller.extend({
+            appName: 'Ember Application',
+            appVersion: '1.0.0'
+        });
+
+        App.Router.map(function () {
+            this.route('favorites');
+        });
+        App.FavoritesRoute = Ember.Route.extend({
+            model: function () {
+                return ["Red", "Blue", "Black", "White"];
+            }
+        });
+    </script>
+
+    <!-- "index" template  -->
+    <script type="text/x-handlebars" data-template-name="index">
+        <h2>Index</h2>
+    </script>
+    <!-- "favorite template -->
+    <script type="text/x-handlebars" data-template-name="favorites">
+        <h2>My favorite colors</h2>
+        <ul>
+          {{#each color in model}}
+            <li>{{color}}</li>
+          {{/each}}
+        </ul>
+        {{#each item in controller}}
+         <p>{{item}}</p>
+        {{/each}}
+    </script>
+</body>
+</html>
